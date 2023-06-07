@@ -1,4 +1,4 @@
-from .views import index, pricing, RegisterUser, UsersView, exit, UsersLoginView, checkcourses
+from .views import index, pricing, RegisterUser, UsersView, exit, UsersLoginView, SendEmail
 from django.urls import path
 
 
@@ -9,5 +9,6 @@ urlpatterns = [
     path('users', UsersView.as_view(), name="users"),
     path('exit', exit, name="exit"),
     path('login', UsersLoginView.as_view(), name="login"),
-    path('check/', checkcourses)
+    path('email', SendEmail.as_view(), name="send_emails"),
+
 ]

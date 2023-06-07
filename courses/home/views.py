@@ -1,18 +1,24 @@
+import ssl
+
+from django.conf import settings
 from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import CreateView, ListView
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegisterForm
-# Create your views here.
+from django.core.mail import send_mail
+import smtplib
+from email.message import EmailMessage
 from .models import Course
-
+from django.contrib import messages
 
 def index(request):
-
+    messages.success(request, 'Успешно!')
     # return HttpResponse("What's up?")
     return render(request, 'home/index.html')
 
@@ -56,14 +62,39 @@ class UsersView(ListView):
     model = User
     context_object_name = 'users'
 
+class SendEmail(View):
+    def get(self, request):
+        # topic = 'Тестове повідомлення'
+        # message = 'Привіт!'
+        # email_from = settings.EMAIL_HOST_USER
+        # email_to = ['gsmkibernetik@gmail.com']
+        # send_mail(topic, message, email_from, email_to)
+        #
 
-def checkcourses(requests):
-    print(Course.objects.all())
+        # msg = EmailMessage()
+        # msg.set_content("Текст повідомлення")
+        # msg["Subject"] = "Тема листа"
+        # msg["From"] = settings.EMAIL_HOST_USER
+        # msg["To"] = 'gsmkibernetik@gmail.com'
+        #
+        # context = ssl.create_default_context()
+        #
+        # with smtplib.SMTP("smtp.gmail.com", port=587) as smtp:
+        #     smtp.starttls(context=context)
+        #     smtp.login(msg["From"], settings.EMAIL_HOST_PASSWORD)
+        #     smtp.send_message(msg)
 
-    return redirect('/')
 
 
+        message = """\
+                What's up?."""
 
+        server = smtplib.SMTP(settings.EMAIL_HOST, 587)
+        server.ehlo()  # Can be omitted
+        server.starttls(context=ssl.create_default_context())  # Secure the connection
+        server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+        server.sendmail("maksnoname58@gmail.com", "dhejrrhjrjr@gmail.com", f"Subject: Test message\n{message}")
+        server.quit()
 
-
+        return HttpResponse("Повідомлення відправлено")
 
