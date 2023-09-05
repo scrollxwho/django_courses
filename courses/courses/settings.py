@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
+    'userprofile.apps.UserprofileConfig',
     'api.apps.ApiConfig',
     'rest_framework',
 
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk'
 
 TIME_ZONE = 'Europe/Kiev'
 
@@ -142,4 +143,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TSL = True
 EMAIL_PORT = 587
+
+AUTH_USER_MODEL = 'userprofile.User'
+# AUTH_USER_MODEL = 'home.Student'
 

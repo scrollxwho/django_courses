@@ -1,0 +1,49 @@
+{% extends 'userprofile/base.html' %}
+
+
+
+{% block title %} Регистрация {% endblock %}
+{% block propusk %}
+
+    <section id="pricing" class="pricing sections-bg">
+     <div class="container" data-aos="fade-up">
+       <div class="row g-4 py-lg-5" data-aos="zoom-out" data-aos-delay="100">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="pricing-item featured">
+              <div class="card-header">
+                <h3 class="text-center">Регистрация</h3>
+              </div>
+              <div class="card-body">
+                <form method="post">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                  <label class="form-label" for="{{ form.username.id_for_label }}">Username</label>
+                  {{ form.username }}
+                  </div>
+                  <div class="mb-3">
+                   <label class="form-label" for="{{ form.password1.id_for_label }}">Password</label>
+                  {{ form.password1 }}
+                  </div>
+                  <div class="mb-3">
+                  <label class="form-label" for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                  {{ form.password2 }}
+                  </div>
+                  <div class="mb-3">
+                  <label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
+                  {{ form.email }}
+                  </div>
+                  {{ form.errors }}
+                  <div class="text-center">
+                    <button type="submit" class="buy-btn">Зарегистрироваться</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

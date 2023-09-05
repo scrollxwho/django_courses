@@ -3,98 +3,717 @@
 
 {% block title %} Главная страница {% endblock %}
 
-{% block content %}
-  <!-- Jumbotron -->
-  <div class="jumbotron">
-    <div class="container">
-      <h1 class="display-4">Учите Python</h1>
-      <p class="lead">Станьте экспертом в языке программирования Python с нашими комплексными курсами.</p>
-      <hr class="my-4">
-      <a class="btn btn-primary btn-lg" href="http://127.0.0.1:8000/prices" role="button">Записаться на курс</a>
-    </div>
-  </div>
+{% block propusk %}
 
-  <!-- Courses section -->
-  <section id="courses" class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://ru.wikijournal.org/w-wiki/images/thumb/e/e3/Logo_python_basis.png/260px-Logo_python_basis.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">PYTHON ДЛЯ НАЧИНАЮЩИХ</h5>
-              <p class="card-text">Изучите основы языка программирования Python с нуля.</p>
-              <a href="http://127.0.0.1:8000/prices#details" class="btn btn-primary">Подробнее</a>
-            </div>
-          </div>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+    <div class="container position-relative">
+      <div class="row gy-5" data-aos="fade-in">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+          <h2>Добро пожаловать!<span></span></h2>
+          <p>Ваш путь к миру программирования начинается здесь! Мы - ваш надежный партнер в мире программирования на Python. Если вы хотите освоить этот мощный инструмент и стать опытным разработчиком, вы находитесь в нужном месте. Узнайте, почему наши курсы стали выбором для тысяч студентов по всему миру. </p>
         </div>
-        <div class="col
-    <div class="col-md-4">
-      <div class="card">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ53GjfEfvWbzeQ-ukuRT_qXBxxfFau2TJcbg&usqp=CAU" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Python для Data Science</h5>
-          <p class="card-text">Изучите, как использовать Python для анализа данных, визуализации и машинного обучения.</p>
-          <a href="http://127.0.0.1:8000/prices#details" class="btn btn-primary">Подробнее</a>
+        <div class="col-lg-6 order-1 order-lg-2">
+          <img src="static/home/images/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAABgFBMVEUAAAAPPi7///+Xl5dUa2MAOCgQPS79///+/f4DAAANPy78/PwEBAQGAAASPS8SPi//0UDq6uoALxz39/cANSM4d60dHR03cqRsbGyJiYnb29sAHAD+1ELT09NeXl7h4eEAJhI4bpy+vr4yMjLJyclJSUkAKRUAPCoAMx4AAAcrKysMDAy1tbWkpKQ/Pz99fX0AFwAZOS6qqqqPj48NIhtnZ2cYGBgKFBA3NzeOnJc5VEoALh4sRTxpenTg6efK1NEMJx5SUlIxUnG2xsF4iYP/yj0AEgD/5lecsqv/3UX/1DYAIQC7x8MMGhUPJR2KlpJBYFRYc2nR4dwsUkQLFSEVIzA3cpciRGY7Zo4kOUzk8u4zeLQbFgyvn0fu2VbJt1lqXimbikLNv1A2Unm3s1zgykxDhLYUICufkkc4a6FiWzjt1VB9cTfOsTUgM0UzLiMAABXJoz4IFS49NxntzkmjljTbzGX/601cUCGIdzpOQSaslCYeNEE9PSjr10VNQSwYPpqiAAAcdElEQVR4nO1diV/bVraWFWuXZWwZQnACghKJPXF27wScxgQnEJKmFKZb+pqZ7tNp5nXaN8u//s65iyRj40Uyy2/q85sJYLuW7uezfGe514I4lpMiXPQNXEIZY9IpY0w6ZYxJp4wx6ZQxJp0yxqRTxph0yhiTThlj0inClbGcFGEsY+ktWkpY3bzom7hcognCPUu/6Lu4JKKRf1PmvYKlJy74XjrFNC/iqppgpjThYUFPJxKXDZMLAYSIpq0W0rquXz5MhJWLiYRayty0ABJZvkyYEJu5KQiLj89dWTQzlbpXQKuhcs6XP10AiJXptTvC9LVzv7SmPUcduXyYCMK1RWHl7pXpx7PnfWF0JAk5cQkxWV0BNO7evHW+V9VSq5vpQEUuGSYg4F9nz9WbaFpq0wKrSV9STACLm4/PORpr96y0nDgp53kHl0xSwvMTjuSPjklKe1iw0h14/KExoRyti5b8MTExNU24V9B1K6F3QeTSYGKem3M1sUby/BSruVSYnJ9oAqS/Cb27hlwmTKYX5jKL02evKyYigozE6gHJpcBkdo7WyxfP/Eopzdws9MTjkmByRxQN20BQzjz908C1JrqwtMuGyYJoX5sSHlyzRcOYOssLpbCO1suPXBJMTIDkBkViKiOKa2d2IQi/DzcLgyBy4ZgI10Sb/mIKd0VDfHxGl9E088VpdOSyYfJIFGdpiQ3+PyOKN87kKiZpUSTkvt71UmByRbQ/8CPwLCjKtdHHY4i/z60BVeQyYAJReCb4a1EUM6sjvoJGWhRDIHLBmJjCdJsPAUsS74z8Ii8KgzqSC8IELWP1/vrCnVs02qBqBM+tAVUZYTw2BWxRyMMhciGY3M0Q1mpfwb8+ID6EyyqJx6PyKNj9BUAG4iQXiYmwAcs2MgQWEmTW4U/+nCncAojuj+hKmvAcWasu98qBzw+T0z/pD2xRvLsimCTHQVBW7TYfcqPN6UYW7IkT1gpEXu7H5c8Lk65NGoAqIxo36R93QCWQt04DOI/8l8zCX6Noj2qrL3rWSM4fE7CBjS6PYpwRb/HRAQQFuzkkHvuatSZmYje9QEsg2ICOREMl7uW7y+xpFgDrD/6YoTHnMWAz7T/4wXrMMoppato9YKzDetazxuSRIYrdGnpTtmEEf80yRQnHY7KqOJfGymL/EskFYAL5XPsymawYvp7gwheoOj0Il05iV2ZJHe0yYiLYba6Sr3LFMMQHwcMbOIwKT4bjcRwxUxp2fyHQxAJlFLfSTcCZ2g9wvQDHrZlM5sY1/GPKJj7WfxVEXsJGbGMUVI20KKIGm7PHxMTlLpBfpmZotXUOH79Bfvqrv8u06b4oLo4g+XteiONazwwTky6YknaMxysZMbMGXtQgJehbJMaY/LW3RJGGmbXZuG6Ed3+HJWjnpycCEg2iGhniPqcWAQzkHZjoBK+53z08DS0QbMC1xkfjjDC5y8naFFGJBaQeSNIWKUTXQuUAoifduN2wgsleunfP5sIwQX8alA9h+fasH32AmhCNuREOvIvUy8SzG0QEHEnXdvjFYwLeA1Y8zck7ZsABbb3GrMZmTE3AyqMYm8cDa31YODl9dZkwwdYEJWsrAvEWEHt8FZijtRFwuuBvbwqrszfE+OVXHPXVLX1kOjJ6TICGAStbF27OkD5neyEeqLyNUK2Q4okNVMWI2yLWBPNF+tSZicuCCdqDjcqCq8e0J8ju0M0uEru6RlDJ3Hlw6rsMIqaWIr3OKIIhG9mujoTmJM2LB0A3ybC6IspaWyF+BYyGFU9uTk9jwIlpOM8LetTURk/kXKcslR031/FcvJvqIrcQE78UD8EmlPZcIc7G5FsvYm3B0IRVoiPRuLzulKtrMxn7qLZQdbNnhgldIOQ5GX9qwkQUxJVAHezRzA5o8IaQ7EVCI51OWPpSoWn7WyLtPcc7U0yE9dmpcI0oQ9Me9opb4eAcXbQUNm0ixxrPKdqi6mOiiAeVNgMawR36sn6HInMlxN+xvhoqxM+RBCeuaNj9jehJ9ES5VBMNQ2WgQBgwVHs/DEr8G+SyYRM/YtJS/Dp1FybG47ngRTfjF6BTdB4tcrKXTSqiqiih/cSKKh5VpDPRkznGRkygrMF4DSpKKM+LF37BalIPWYkkIiZL1TAcvtSkwKfEu8U2uRmsnrpZ6mEWRtoYNzetoWYETopnKWoXSAxx2x0ZJuFwusD8iCk8DsXjKcJszS6vH0awiQWuFRyJHoPIywmnJpLROUMV7ZkaWJGqKtR8kjn+xhFvsatMBUXYxVAzA1yu8ei0/2ZwSZHKYrzSopxr+BG4Ie26pXrIevJ6ekSYzIYKILj6D8hvUyJj9agXo5g/8kd9IyuJlAV+53JnUqtkwUtLt4uKb0sNHnvi3usGLDewhzk2pkdK8bbASpH3xbkYJQFiNThYY8mo3MM7EwtyRCnrvCxmE9I+5yX7S5Du6GnZKTJbUsS6MxpMHtGZGo7KfVJhJEDYnInA79Onv8FAoqFrjZr8Ao653dJ6RpzJJrJFbjkuMxTdCcxnXxqNnsy1N7fWiB9BiHAC6crUynr8SUYyoZeIajWQ7DnVOprMjJtwWQ9BbLkWezupxB5SxWJuNJhstM3UkKbWXd+LoCzGLSymNEx/E3IU9yoTRGoYXcCFZBO5OZE6lJbDq7e606KPGeJadjSYYAAOpzABr3+wAIZ641pMksZaFNE0BOhIvnoAGkAWXSvruZpvO9wULW9fIaxWFWechB59H/qja1fWr63QX9kYCZfAzQrmB6tCzBpJanUTPu2oAdhySy3gHizW2JLuHgS+g2Giy3pNobZj78qRMdlYpNxvjTjTKwDKSvDkNDwxiv6EQCIOsNZ09AK0UzRQSRgmiqW7LY5J0+WYWC73svZuZD3BmkiG1OQzGwgK/BIMm5Aq9eIIxvRM2qKImupBjphLhxiZodhNK+FTNkUtsfzG0p0F9lBtl45IDn+zoCQLoAgbC4CFvcFmXH3+gWPzWB2ICwp29gqxMptyMigb4ZLvfKjLUsVPAFsOf3N3RuHBKKLtrPmJHtAyWgaYaYvHGbGtOhBVVoed9G0XeanaXhFQ7DTQjzx3sorYcImf0nXriLxOEYvZKJiQbqbPwBaYe30UjseL4t34hSON7HSNAYm+1KDx1TAUXj2qgwuBh1XmUY2XLolN+TsctiQzp2Hv1vZLiTjEyEZswCAN6mZX5gCl2bY+eQREgKOl40xNyIlciQZYzH95QqNUcwm9zBUF67AfOkuO0+R037emIW/3iujHGNMkA2kIEZYD7Gmcz6OB+EZbW2doROjQhBW9Jw4OVlENqg4HSR8FO6vLqCgMIkM8WttrKpjqEOFetxMT3JCsLZ92wxmS4voOdIFOIxG/KtoZgxnNdKgwPYSkcGTR7/5GnySR5SxGHBX8iVIsu1WR5r6q2ASHcZtTFO5rVBp0xKJP4zpubFlLaaffNrgTMXQcBw6kEU/CbDJDm51TUb1sKrVaSCesmN1fWXpJF6uIVdfT83VSN0JgXkmWV2kLR75su/5Vu9zY64/+fPpdt+V8pAJNNeL+4tzcjWurtDL9oPvUY38xN0m0iYmJniXmAg6l6ehpWdpXiF8l5YC0nkuKXaqP4Ez8JmnohoiC/Lj1ZnLy3fzHqWXUlmUQwQxbEhZdrwSKMt11OHgjytC8qZENarimmC1xj65aUewKuhaZu1EAqQo+w91T8FcGDBgYBKZmXg4y7+CecOUfHb6bvPrNVZBP2I0uIy7hW19sqyTe7KoRdyPMzMcf9fUle4fUiRRxjdad5QJ3s+oR1o3cqi3SMixzK7WkG/4cQjelvd56d3x18iqReR8n/i8XUQyF442uniMztOmQOloizhiJFDRo3JpIE90qK4jkqr5fLWaRvFRaYmBAtb281PZW7J6WzZTw8SQIQ+Tqmy345IQ/ffrZd59/sbwc9rp3wm52tluEWR92/EgTVnGna6RIg7vKvaxjVV5ZTpa4Ij1tE0wMIGH0HbGYRrmqqkDEtXTPSbZs8oDdqpaz4EnSoYuzuwJIDgGQAJP5efCXX362A/L0bXsNJOPX0git79iCdKt9LrgvICk2jxZNZF3arRQPYIX2wZ7rAUT6K4qJ4led01LJ9x/1XaKNkuOWXlZfVrKO1OG9/E8KIJk8DmFy9Svhf3auozy7/nXbHr3QjOudLqZzdzhIBDLqG9Gtyri45Dbxn8hBaiVAQXplM/7Oq85yOltkmIDy5Ijb0nUJRLa6tIv4fW0dH7/zTQe0BOQj4TMKysSzH/hponxvNPEX01hevHligY8MY3qoyRLkaOlIZoOVd6fUwtCBgCjITCseMOAawUQ1FMhgZGJeetn2uxjYBU2TKSUgh+kuZIjd2J/fHX9sfoyYTHJMvjkUfiOYTExMXP8LRCB/nY8JaSXUZ+Zk+cgUbm4MqiUmOdU3ekEgnfDcYlv3V8FCdNo94CTVT2H0LK+cqGJjiVbu5NM+CHZ7X03OU/shhkMxmf9Y+Ow9xWRi59vwstfIiIJoL9zvKC2ybfaDCPB4bTPyBjWy0MrBCf6liuuOvlT0iXsyy0Bx/dCjHuX7vC/H5PgdRGOga5Pzh9x2vjn86xdPGSYTPwjLoaWCjqx9sNJ1pebgkNAt89EJmtswaALHqwHEfJKStE/7WPhACSkKxJmqX4FUxb1s72uyG/zo+M3Vrfnj48kt7QGDBOQT4TuGyZPr34edxJVgWi+i4CECWEc7VYH7SFqXnG2uDgZyUZ7eQmDJ1jhJNexGfnc3X2khWlxsyxvo7KBDYGuTk4erQGXnfUy2hLdcT1BRAlVg+XEMSLSHZGYxMknTc4W6qPrrDLyKARFYqorBE/biYg3VI2Rkjc5Zxy6YpF4fXz2e/1F4cEjJCcfk5x2mJ0+u/xSel8D8OEbHM2VuEooWnbfmKmShzJVWS0nuWRTV3pUlRuYVQyUVA3gujEkt39N4/GVuTX4MEXnyamA5828+QT2ZoJhMfNnmKNi+xqFL0ehYkaPFSvPS6aX9I183Mi9v57zcwzo1D1IJyZX8YmygQSqL2fDQS6nX23NMlpdTwifzk22YAL1/6mPy5GchnAxifnw3iopodMt8rHKALiVtmsQBCrXCUgLbeRWFlZrVo1cecrSOikCrytlssafxsDuF1X705l3A11AO/xq4E4KJ2Z72GPbwR1CwFkXnPPdQIucw2tLlZW5L1GG6azTaADKtXT3fOomIWHd36Qioqsy4vd4ebzQFi319GCSAiMdVCDp/ertzfYK52IknP7dlgsID2xj+SCiN9Dr7iXSaEvEMwLKcA3AV1DaSLIjoLB3GNe97XrklYslepcZikM5ftklckKrYfeMOLPardz6zB0Tgn6+Whb8gteeYPHn22wnngTu2hh2kMPshYlkJz9k/RbPlnJvPO0u6bMnSSz+21j5kSPnlZ4V0w/Pr6EIMkdKXWtIhxSbiUAzjVS+HQm51+Q2Seh+S+atbfxO+//rX6wEmTyAWhzFhwxSDV9OQ3GhkQq8nJsA69uvKftc7zpaTzfpBfa+M9XU+ISEiBUsQok4qAuyxRk5Pu6UWw02pN8pYNkAyR/REKfXF5PAY2FqQAX7zifDL26c711kGSCB5/0tHLX9jdmNj4LhDXGufopGe1pesNVhW/XYnctnyXo2GkUwJeChk/5yX2QXahNCx5kibOoq9S4sIjWZru9l45eR0nEvy9ukLFPtVvzMwX1NEKChvDsGRfPqU4sFd7M7flzvC7jBhmE3o9QIEZam8d0TWWT1pPV62cYT1ABSsC6Utl49hGeK2Qzy2pTtrfvrTLOPlvKWs62ZzbFpDzu4RN6wqtZ7sHu/443eTPiaTh38Tvvz30+vXQ5jsfP77yQLksKggR+uHSELCiSKi7rVy26v1cqVO6AWQeNB+tZYHAKwjzsvECgk9suy9sjm1VcgxhrJsobB3sT60WaNn7eT2lA5Mtt75iFw9XH7wv7++f++rybOJnbf/wDp1xEEBCL4aaVH0HL2ifKVcZxFWEYtL4afdanhEHn4Ws1YCPnRqCApEWZnUHLF0xFM9UiYg7ovD60GCRPWkUw87MPnxOMDkR+Hzpzs7HBL4+fRLQfhp+dTGYF9Jkemr3nwEAwn8kCqGz8/dQFG83eKJeXBVqUC8dus+AEnmMvVyhm+3ADcaumYaEqTbnLK0vfspmLwOMDkUvkVIfDX57FNB+O3p590sZ1DB7m8fu9GXEvseMoymbw6tJQ6jDI+e4KQKuBBIeZJ+PM7w0dZg6EastemC5CRrvrPprSY07kwecw97KPz2HdeTieu/vv1F+P3rnSfXv40Eikn2lXQ9Qj74/PATzFePjCzkhDiDp9Iu5gFvaOv5JjUQtB1F5JWRZC5hOS2GFamdoVg6KI9hoCcWt/GquBVS1r0cVgsoN4F/6uXe8Y/c/BbDBNyJ8KVvOjtffyv86+3TZzvPnrxvbwYOJho51bf3GAmep46foCI2l9LkY7YRkVr1NnuBDPGF1o1EZa3iNLm5wLoSHsZj8jcQUz7umkT6Cs+XiD9Jy7kl16k06sFUm3rk9DnFjtz866sMk2/m//q7H4a/+3757zsTE1//9un1id+iKEpqkDpatoBFZggqFdSM3TousBhs5pSSCts5USs5nv6hPzjRyOq671IN0hkmeuFipalWzdMWhZ6u7q3N2CKdkKWg7Ht9ThrGe18WtoiSYOlkS3j7lPvX794DJDs/CcLPEz8MF3dIZnQPGInVpyGu63doSFHVlisT2iWuSWBHli7l8D/NYoUMl7OW9+DBpVnuJ2uWlLbKR9Qe4BX7zNggP7b38jxs6bkj6nEVYn3w6kwlpyd6Kwr9QIV5TmK/ef0Pn8EiOXnyfkpY/r9nPw+nJ4SjDVSQz/LJB0N8mQMIy0VQejB3zy01wJosL4mYGGKR7CTJWgd8ooZMc5aDglqL07Dcywofpk+QtijXEKJvrYLUlymxJfxz8pg1uw6Ft7/6YQdAefbp79+/B9vpMZTSRVY39cG2/oL9szsWD8q6ZaWzXiIN5CPXVIxXHnyg7jYmcnu4TD3fMPzwq2LOopeDCRseTHTPC5/VDokRh1EV7b1dL9G3VUDVxCTWg5i8Of7nL5+FMXmCxO2H9pZxPxmItVKxlloi63iLDWSv6Cy9fANPv9heQieJm9WauwCXhzMTfBwAXr8NCuVxSBW1xrkp7k0JMPFKjAYijyssyQMM/PjKjqDMg5cFivLlr+9D2R/8+PpPA8Oh8RbFwJJT+Dpty8P/UM8nWSWEZPTZplh3dAioLO01DF6hT3qFBC/eGwZA2vX9IXCREROltb871BndQMG3rqL5vNlaFh58HWTEqChvlwfnsVoKv3hw8EESPeH68RVHypDU1pk6KHX82yvUC6A9XnmGcnnVtpkxzLiYHxskxQH6plS6XsEr2Bi1ihVHGrC456u7Jvx56/Bw6zXuu/viaQiTnS+Xh8AE0195qI54MGCmKq8weJQZJrBM9BG6lfPAGjAZIkHmoNTg1oNMzaXdcWBi3WsiaT2712yUdrNet2d7YhKWZeEt8yhPnu0AlR1YtNUXw9fjSSuXVlLBRViQ3SbJWCv+c1TGGITVW3eNsC5wMrclPrSnZnKw0DzkwgYwEufURWfd3OCAnIrJv56SAtv1p2+/EAbVEU1L3Ys2fOUcsXxVhXiMEzRNhRfli1kyVqOXq3ycc1eWCVclcaTpAgOBeKzsubnRHZXTFZNlyHKA4v+b1E3MQSPO80K02Ss/eAAQc2QQoKxQN0rKRzJphM6hFwV6kcdr7LYQL1APIL9y2jnYLmdHeVROt8URyvrLf35CBRkMEPqdrroepUMB1pGnEUUhlRGwlKU9lsaoJAHWUReI5th4EYjABe6C6k7CShTcAclQDEyGllSKjJFEs5z2iZkjS0Lr8QcVwZrg+Szr3WQgmlpyrlxX/Ke9kRzdNygmg85MpNj3hUWe5JScAt/PKZJzA9L+oCIm9oCJ26KmY1QknM+rEX+CDmZ7hOrhSyz9wNavJqTusQNbo5m05yaD/VgGehDd8ty6n6ZAPJb9PWszhd3kNtoRSersRr/xmkgSCxOTneobffAZ0jhrOzx+ZeC8lZXG0gh7OFP2/L3Shmgfsda4gYykZ6k5ssTTEzqhF8flO9Wjk5XFai6dDtgt2TAhJfn0DRZCaJ1ZKea90Z7LxiWOklDXGmPrkZ5wkIWysiprV4kHu1itlLnbVdCaMNdRmXGR2QGgs26cUz96SRwlMV/Em5BP6/ki79zh1Ax3qzj/nYB4zFVj20Ga5g8lGVRJOmd9RyXRMYk7WAMCrF7lmCh1mxI1VT0q4AyTk2EY4ZgvdnN884EUt5KNOcLSS6LBYWqsIB8LFamEfJW0O8W1ktBkNXlC1GQr95JqjmqoBw7QtibtjWLwSeZ7zhnFlUiQaGywJo7opARGQ4iY2XckJGq8uF6SrHTCHxMQsS2ou7fo2Znb+07v9kxsiaYnL9Kx9pVQkdgYgKFmCniWUa7hb1fEQXldKol8JO0ItxwtlZPV6n7WOaNoE0gEHcGDnvp/8WA/keUydbAqpWk4PzLjx9+qB2robvuet5jDTrgkYdI/6FeVRZbhIRmusniqpHV3jjoQFYIvMUR/p55Ch4902abDV/B3+excaocMi8kgYyQDiewfUOMPEVi7jMLjPGcZ50WajLWo4nr2jMhIFxlOSUz2na6juD264TW89SjhlTgHUTOSjPzFpse1KEptd3TnkveTIQABjhZnF8VJ4ZiIoWETl289EpGoyXJ23d9N0MidRQrcVQZGJKU9T8dLbU5IzteTA39aFedHOKUveQBC4Yhj1DqbfK+bDKwmz/GgiRFikpb2uZ0o/oiMvOSfs6ceYAfM9U9YODHOdZYyICJRT/XtIbqV4RRtLSin8uPSFLpxz9v3Q1FpqNp7HBnIbKK0KPoLFs/onnlqJyg6a2VifeQICfxtvsOiz4z8KGUQTO5F3tfZQyw9x89nAfrhMiXIlfkJLXjaQE62lra5MTXPzaH0RgOTvecj/S6KkBBKxhZ8YLme5OXy/mElYDu1fQ8cTPOSYSKktJgHPfWUsh95FcUuliqlxoFC92NhiaSVRdvJsaqjelkw0VY3E5FP1e8v/tgv3SZAJy44Hyk6hLhmfT2pnml9ICy9IDFH9zU/3QUiLztWkG1hVNj8uJhJOvR7QpntKKpxbjT2NEy0FHC0s7MaKmnStzm5HQsbOa0Cp7b5A5FOXdWzF53vkIOeRt5gOyG6rEu1YO8nNyOcWuSbXWnzSyVJ0cVyttTo0t+eosteoUbGHklRkR070JRy9Av+ZCzFqQru+VTn+g21jlC6ImJuxjwLe3CRcAZPpXiQn03L4eqZ1nMv2f4UpXp+atLlLDKBHmt0PrdgJXSnUWNuFpKaIg4GB4W0PKvdK1i1vhg9McGPENZqyWfAXLtJGnf55ZPFem1uZqFRuu1KoaKmLlWbxUayVCnns3rirD1+ICdd68PRJ3v9RXIdF/7XOXKWy2ZzknR23a3uEsIDu7+bhRgzE3HknJfdU8KYmNSRXAgmMjmw5gJ0tIsEnjXOQU//XeLH3wG2Y/1RhGFCOFrsPtZ/iZCTngY5ROAPJLiv88Uovhz6v0jId1GMpU2EsieNpV2E5FhOiiCO5aQIylhOylhPOmWMSaeMMemUMSadMsakU8aYdMoYk04ZY9IpY0w6ZYxJp4wx6ZQxJp3y/2RqcTcNXpqPAAAAAElFTkSuQmCC" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">PYTHON ДЛЯ ВЕБ-РАЗРАБОТКИ</h5>
-          <p class="card-text">Изучите, как создавать веб-приложения с использованием Python и популярных веб-фреймворков.</p>
-          <a href="http://127.0.0.1:8000/prices#details" class="btn btn-primary">Подробнее</a>
+
+    <div class="icon-boxes position-relative">
+      <div class="container position-relative">
+        <div class="row gy-4 mt-5">
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-easel"></i></div>
+              <h4 class="title"><a href="" class="stretched-link">Lorem Ipsum</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-gem"></i></div>
+              <h4 class="title"><a href="" class="stretched-link">Sed ut perspiciatis</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-geo-alt"></i></div>
+              <h4 class="title"><a href="" class="stretched-link">Magni Dolores</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-command"></i></div>
+              <h4 class="title"><a href="" class="stretched-link">Nemo Enim</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
         </div>
       </div>
     </div>
-  </div>
-</div>
-  </section>
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-  <!-- Instructors section -->
-  <section id="instructors" class="py-5">
-    <div class="container">
-      <h2 class="text-center mb-5">НАШИ ПРЕПОДАВАТЕЛИ</h2>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_UA6mFOV3c1mdCe4GPGn8GxSNWcv6EutIDg&usqp=CAU" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">ДЖОН ДОУ</h5>
-              <p class="card-text">Джон - эксперт по Python с более чем 10-летним опытом в разработке программного обеспечения и анализе данных.</p>
-              <a href="#" class="btn btn-primary">Посмотреть профиль</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaI04C8tpvNzuraTaxKN8LUk8unMHkbPPyhA&usqp=CAU" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">ДЖЕЙН СМИТ</h5>
-              <p class="card-text">Джейн - разработчик Python и эксперт в области машинного обучения с увлечением для обучения.</p>
-              <a href="#" class="btn btn-primary">Посмотреть профиль</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6eD32za3eOFwbRyAfNjVNDaMHXd_G_R1Mew&usqp=CAU" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">МАРК ДЖОНСОН</h5>
-              <p class="card-text">Марк - веб-разработчик и энтузиаст Python, который любит создавать и делиться своими знаниями.</p>
-              <a href="#" class="btn btn-primary">Посмотреть профиль</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   </section>
+  <!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>О нас</h2>
+          <p>Мы предоставляем самые качественные и доступные курсы по языку программирования Python.</p>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <h3>О наших достижениях в цифрах</h3>
+            <img src="static/home/images/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
+            <p>Мы гордимся нашими достижениями в обучении Python и вот некоторые впечатляющие цифры, которые подтверждают нашу репутацию:</p>
+            <p><strong>10+ лет опыта:</strong> Мы успешно обучаем студентов Python уже более 10 лет, и наш опыт только растет.<br>
+              <strong>5000+ довольных студентов:</strong> Более 5000 студентов завершили наши курсы и достигли значительных успехов в мире программирования.<br>
+              <strong>95% уровень удовлетворенности:</strong> 95% наших студентов рекомендуют наши курсы своим друзьям и коллегам.<br>
+              <strong>100+ проектов:</strong> Наши студенты создали более 100 успешных проектов, демонстрируя свои навыки и креативность.
+            </p>
+            <p>Эти цифры подтверждают нашу способность предоставить высококачественное обучение и поддержку, которые помогут вам достичь ваших целей в мире Python..</p>
+          </div>
+          <div class="col-lg-6">
+            <div class="content ps-0 ps-lg-5">
+              <p class="fst-italic">
+                Наша компания — это команда экспертов в области программирования, которые разработали идеальные курсы для вас. Наш опыт и страсть к Python позволяют нам обучать студентов всех уровней: от новичков до опытных разработчиков, стремящихся совершенствовать свои навыки.
+              </p>
+              <ul>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>Профессионализм:</strong> Наша команда состоит из высококвалифицированных инструкторов, которые обладают глубоким знанием Python и опытом в обучении..</li>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>Поддержка:</strong> Мы гарантируем поддержку на каждом этапе вашего обучения, готовы ответить на все ваши вопросы и помочь в преодолении сложностей.</li>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>Результаты:</strong> Наши студенты достигают впечатляющих результатов и создают удивительные проекты после прохождения наших курсов. Вы тоже можете быть одним из них!</li>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>Актуальность:</strong> Мы всегда следим за последними тенденциями и обновлениями в мире Python, чтобы наши курсы всегда оставались актуальными.</li>
+                <li><i class="bi bi-check-circle-fill"></i> <strong>Больше чем курсы:</strong> Мы предлагаем дополнительные ресурсы, такие как вебинары, практические задания и доступ к эксклюзивным материалам, чтобы обеспечить полное и глубокое погружение в мир Python.</li>
+              </ul>
+
+
+              <div class="position-relative mt-4">
+                <img src="static/home/images/about-2.jpg" class="img-fluid rounded-4" alt="">
+                <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+      <div class="container" data-aos="zoom-out">
+
+        <div class="section-header">
+          <h2>Компании-клиенты</h2>
+          <p>Наши курсы по Python получили признание и поддержку от множества ведущих компаний и организаций в индустрии информационных технологий и разработки программного обеспечения. Эти компании признали качество нашего обучения и выбрали нас в качестве партнера для развития навыков своих сотрудников в области Python программирования.</p>
+        </div>
+
+        <div class="clients-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><img src="static/home/images/clients/client-1.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/home/images/clients/client-2.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/home/images/clients/client-3.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/home/images/clients/client-4.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/home/images/clients/client-5.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/home/images/clients/client-6.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/home/images/clients/client-7.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="static/home/images/clients/client-8.png" class="img-fluid" alt=""></div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+    <!-- ======= Stats Counter Section ======= -->
+    <section id="stats-counter" class="stats-counter">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4 align-items-center">
+
+
+          <div class="col-lg-6">
+            <img src="static/home/images/stats-img.svg" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="stats-item d-flex align-items-center">
+              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Довольных клиентов</strong>которые успешно завершили наши курсы и достигли своих целей.</p>
+            </div><!-- End Stats Item -->
+
+            <div class="stats-item d-flex align-items-center">
+              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Завершенных заказов</strong> на наши образовательные программы, что свидетельствует о доверии, которое нам оказывают наши студенты.</p>
+            </div><!-- End Stats Item -->
+
+            <div class="stats-item d-flex align-items-center">
+              <span data-purecounter-start="0" data-purecounter-end="453" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Часа поддержки</strong> которые мы предоставили нашим студентам, помогая им решать технические вопросы и преодолевать сложности на пути к освоению Python.</p>
+            </div><!-- End Stats Item -->
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Stats Counter Section -->
+
+    <!-- ======= Call To Action Section ======= -->
+    <section id="call-to-action" class="call-to-action">
+      <div class="container text-center" data-aos="zoom-out">
+        <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+        <h3>Обращение директора школы ImpactIT.</h3>
+        <p> ImpactIT - место, где происходит великое преображение в мире информационных технологий. Миссия ImpactIT - вдохновлять, обучать и поддерживать студентов в достижении их целей в сфере программирования и IT. Школа стремится быть лучшей в своем роде, предоставляя доступ к актуальной информации, профессиональным преподавателям и разнообразным образовательным ресурсам.</p>
+        <a class="cta-btn" href="#">Смотреть</a>
+      </div>
+    </section><!-- End Call To Action Section -->
+
+    <!-- ======= Our Services Section ======= -->
+    <section id="services" class="services sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Наши услуги</h2>
+          <p>Мы предоставляем широкий спектр обучающих услуг, включая начальные и продвинутые курсы по Python. Наши программы обучения созданы так, чтобы подходить как для новичков, так и для опытных разработчиков, желающих усовершенствовать свои навыки.</p>
+        </div>
+
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item  position-relative">
+              <div class="icon">
+                <i class="bi bi-activity"></i>
+              </div>
+              <h3>Nesciunt Mete</h3>
+              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
+              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-broadcast"></i>
+              </div>
+              <h3>Eosle Commodi</h3>
+              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
+              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-easel"></i>
+              </div>
+              <h3>Ledo Markt</h3>
+              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-bounding-box-circles"></i>
+              </div>
+              <h3>Asperiores Commodit</h3>
+              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
+              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-calendar4-week"></i>
+              </div>
+              <h3>Velit Doloremque</h3>
+              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
+              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-chat-square-text"></i>
+              </div>
+              <h3>Dolori Architecto</h3>
+              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
+              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End Our Services Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Отзывы</h2>
+          <p>Что говорят о нас наши студенты? Посмотрите отзывы и истории успеха наших учеников. Мы гордимся тем, как наши курсы помогли им достичь своих целей и реализовать свой потенциал.</p>
+        </div>
+
+        <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <div class="d-flex align-items-center">
+                    <img src="static/home/images/testimonials/testimonials-1.jpg" class="testimonial-img flex-shrink-0" alt="">
+                    <div>
+                      <h3>Saul Goodman</h3>
+                      <h4>Ceo компании</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    Курсы по Python от этой компании - это лучшее, что мне доводилось видеть. Инструкторы внимательно относятся к каждому студенту, и это делает процесс обучения максимально эффективным.
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <div class="d-flex align-items-center">
+                    <img src="static/home/images/testimonials/testimonials-2.jpg" class="testimonial-img flex-shrink-0" alt="">
+                    <div>
+                      <h3>Sara Wilsson</h3>
+                      <h4>Дизайнер</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    Эти курсы - настоящее открытие для меня! Я никогда не думала, что смогу научиться программированию, но благодаря вашей команде инструкторов и понятным материалам смогла!
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <div class="d-flex align-items-center">
+                    <img src="static/home/images/testimonials/testimonials-3.jpg" class="testimonial-img flex-shrink-0" alt="">
+                    <div>
+                      <h3>Jena Karlis</h3>
+                      <h4>Владелец магазина</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    Я начала с нуля, и сейчас, благодаря вашим курсам, могу с уверенностью сказать, что программирую на Python. Простой и понятный подход в обучении сделал этот путь легким.
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <div class="d-flex align-items-center">
+                    <img src="static/home/images/testimonials/testimonials-4.jpg" class="testimonial-img flex-shrink-0" alt="">
+                    <div>
+                      <h3>Matt Brandon</h3>
+                      <h4>Фрилансер</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    Курсы по Python от этой компании - это лучшее, что мне доводилось видеть. Инструкторы внимательно относятся к каждому студенту, и это делает процесс обучения максимально эффективным.
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <div class="d-flex align-items-center">
+                    <img src="static/home/images/testimonials/testimonials-5.jpg" class="testimonial-img flex-shrink-0" alt="">
+                    <div>
+                      <h3>John Larson</h3>
+                      <h4>Разработчик ПО</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    Я долго искал качественные курсы по Python, и могу с уверенностью сказать, что ваша компания не разочаровала. Полезный контент, практические задания и отличная поддержка - все, что нужно!
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+
+    <!-- ======= Our Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Наша команда</h2>
+          <p>Наши инструкторы - это настоящие эксперты в мире Python. Они горячо относятся к своей работе и готовы поделиться своими знаниями с вами. Узнайте больше о нашей команде и их опыте.</p>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="member">
+              <img src="static/home/images/team/team-1.jpg" class="img-fluid" alt="">
+              <h4>Walter White</h4>
+              <span>Веб-разработчик</span>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="member">
+              <img src="static/home/images/team/team-2.jpg" class="img-fluid" alt="">
+              <h4>Sarah Jhinson</h4>
+              <span>Маркетинг-менеджер</span>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="member">
+              <img src="static/home/images/team/team-3.jpg" class="img-fluid" alt="">
+              <h4>William Anderson</h4>
+              <span>Контент-менеджер</span>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="member">
+              <img src="static/home/images/team/team-4.jpg" class="img-fluid" alt="">
+              <h4>Amanda Jepson</h4>
+              <span>Бухгалтер</span>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+        </div>
+
+      </div>
+    </section><!-- End Our Team Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Расценки</h2>
+          <p>В этом разделе вы найдете информацию о ценах и расценках наших курсов по программированию на Python.</p>
+        </div>
+
+        <div class="row g-4 py-lg-5" data-aos="zoom-out" data-aos-delay="100">
+
+          <div class="col-lg-4">
+            <div class="pricing-item">
+              <h3>Базовый курс</h3>
+              <div class="icon">
+                <i class="bi bi-box"></i>
+              </div>
+              <h4><sup>$</sup>26<span> / month</span></h4>
+              <ul>
+                <li><i class="bi bi-check"></i> Освоите основы программирования на Python.</li>
+                <li><i class="bi bi-check"></i> Изучите основные структуры данных и алгоритмы.</li>
+                <li><i class="bi bi-check"></i> Создадите простые консольные приложения на Python.</li>
+                <li class="na"><i class="bi bi-x"></i> <span>Получите сертификат об окончании курса.</span></li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Купить</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4">
+            <div class="pricing-item featured">
+              <h3>Продвинутый курс</h3>
+              <div class="icon">
+                <i class="bi bi-airplane"></i>
+              </div>
+
+              <h4><sup>$</sup>47<span> / month</span></h4>
+              <ul>
+                <li><i class="bi bi-check"></i> Углубленное изучение Python, включая работу с объектно-ориентированным программированием.</li>
+                <li><i class="bi bi-check"></i> Разработка веб-приложений с использованием фреймворков.</li>
+                <li><i class="bi bi-check"></i> Работа с базами данных и API.</li>
+                <li><i class="bi bi-check"></i> Проектная работа для практического опыта.</li>
+                <li><i class="bi bi-check"></i> Получите сертификат об окончании курса.</li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Купить</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4">
+            <div class="pricing-item">
+              <h3>Индивидуальные занятия</h3>
+              <div class="icon">
+                <i class="bi bi-send"></i>
+              </div>
+              <h4><sup>$</sup>65<span> / month</span></h4>
+              <ul>
+                <li><i class="bi bi-check"></i> Гибкий график обучения, составленный по вашим потребностям.</li>
+                <li><i class="bi bi-check"></i> Один на один занятия с опытным инструктором.</li>
+                <li><i class="bi bi-check"></i> Фокус на ваших уникальных целях и задачах.</li>
+                <li><i class="bi bi-check"></i> Персонализированный подход к обучению.</li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Купить</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End Pricing Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4">
+            <div class="content px-xl-5">
+              <h3>Часто задаваемые <strong>вопросы</strong></h3>
+              <p>
+                В этом разделе мы ответим на наиболее часто задаваемые вопросы о наших курсах по программированию на Python.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+
+            <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                    <span class="num">1.</span>
+                    Какие уровни обучения вы предлагаете?
+                  </button>
+                </h3>
+                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Мы предлагаем курсы для всех уровней, включая начинающих, средних и продвинутых программистов. Вы можете выбрать программу обучения, которая наилучшим образом соответствует вашему текущему уровню навыков.
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                    <span class="num">2.</span>
+                    Какие преимущества вашего обучения на Python?
+                  </button>
+                </h3>
+                <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Наши курсы разработаны профессионалами с опытом работы в индустрии. Мы предоставляем структурированные учебные материалы, практические проекты и поддержку инструкторов, чтобы обеспечить вам максимальное погружение в мир Python.
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                    <span class="num">3.</span>
+                    Сколько времени занимает прохождение курсов?
+                  </button>
+                </h3>
+                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Продолжительность курсов может варьироваться в зависимости от выбранной программы. У нас есть как краткосрочные интенсивные курсы, так и долгосрочные программы. Вы можете выбрать оптимальное время обучения для вас.
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
+                    <span class="num">4.</span>
+                    Какая методика обучения используется в ваших курсах?
+                  </button>
+                </h3>
+                <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Мы используем комбинацию лекций, практических заданий и проектной работы. Это позволяет студентам получить не только теоретические знания, но и практический опыт, который они могут применить в реальных проектах.
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
+                    <span class="num">5.</span>
+                    Есть ли у вас сертификаты после окончания курсов?
+                  </button>
+                </h3>
+                <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Да, после успешного окончания наших курсов вы получите сертификат, который подтверждает вашу квалификацию. Этот сертификат может быть полезным при поиске работы или продвижении в карьере.
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Связаться с нами</h2>
+          <p>Мы всегда будем рады ответить на ваши интересующие вопросы!</p>
+        </div>
+
+        <div class="row gx-lg-0 gy-4">
+
+          <div class="col-lg-4">
+
+            <div class="info-container d-flex flex-column align-items-center justify-content-center">
+              <div class="info-item d-flex">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h4>Локация:</h4>
+                  <p>A108 Адам Стрит, Нью-Йорк, НЮ 535022</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h4>Емейл:</h4>
+                  <p>info-impact@gmail.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-phone flex-shrink-0"></i>
+                <div>
+                  <h4>Позвонить:</h4>
+                  <p>+1 5589 55488 55</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-clock flex-shrink-0"></i>
+                <div>
+                  <h4>График работы:</h4>
+                  <p>Пн-Сб: 11:00 - 23:00</p>
+                </div>
+              </div><!-- End Info Item -->
+            </div>
+
+          </div>
+
+          <div class="col-lg-8">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Ваш емейл" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Заголовок" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="7" placeholder="Сообщение" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Загрузка</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Ваше сообщение было отправлено. Спасибо!</div>
+              </div>
+              <div class="text-center"><button type="submit">Отправить</button></div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
   {% endblock %}
+
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+</body>
+
+</html>
